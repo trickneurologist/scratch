@@ -1,0 +1,71 @@
+PREFIX process: <http://www.modusoperandi.com/pharaoh/process/>
+PREFIX pharaoh: <http://www.modusoperandi.com/pharaoh/>
+PREFIX xwiki: <http://modusoperandi.com/swiki/XWiki/>
+PREFIX xProp: <http://modusoperandi.com/swiki/prop/>
+PREFIX task: <http://www.modusoperandi.com/pharaoh/task/>
+PREFIX variable: <http://www.modusoperandi.com/pharaoh/variable/>
+PREFIX processModel: <http://www.modusoperandi.com/pharaoh/>
+
+DELETE
+{
+?subject ?predicate ?value .
+}
+INSERT  { 
+?subject variable:priority "? number:50 ?".
+?subject variable:duedate "".
+}
+WHERE {
+BIND (process:2514 AS ?subject) .
+OPTIONAL { ?subject ?predicate ?value } .
+FILTER (?predicate in (variable:priority,variable:duedate))
+}
+
+PREFIX process: <http://www.modusoperandi.com/pharaoh/process/>
+
+SELECT * {
+  process:2514 ?y ?z .
+} limit 10
+
+PREFIX process: <http://www.modusoperandi.com/pharaoh/process/>
+PREFIX variable: <http://www.modusoperandi.com/pharaoh/variable/>
+
+DELETE {
+?subject ?predicate ?value .
+}
+INSERT  { 
+?subject variable:priority "? number:50 ?".
+?subject variable:duedate "".
+}
+WHERE {
+BIND (process:25142514 AS ?subject) .
+}
+
+
+
+
+
+
+PREFIX process: <http://www.modusoperandi.com/pharaoh/process/>
+PREFIX pharaoh: <http://www.modusoperandi.com/pharaoh/>
+PREFIX xwiki: <http://modusoperandi.com/swiki/XWiki/>
+PREFIX xProp: <http://modusoperandi.com/swiki/prop/>
+PREFIX task: <http://www.modusoperandi.com/pharaoh/task/>
+PREFIX variable: <http://www.modusoperandi.com/pharaoh/variable/>
+PREFIX processModel: <http://www.modusoperandi.com/pharaoh/>
+
+DELETE
+{
+?subject ?predicate ?value .
+}
+INSERT  { 
+?subject variable:priority "100".
+?subject variable:duedate "1999-05-23".
+}
+WHERE {
+BIND (process:2535 AS ?subject) .
+OPTIONAL { ?subject ?predicate ?value } .
+FILTER (?predicate in (variable:priority,variable:duedate))
+}
+
+
+process:15001
