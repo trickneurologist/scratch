@@ -1,0 +1,99 @@
+x Hide Resolve Button in task dialog
+x Add filter for description in task dialog
+- Add type column (subprocess and subtask)
+- Clicking sub* in list brings up properties dialog
+x Investigate Orbeon forms
+- 
+- Persistence of custom forms (alfresco?)
+- internal testing environment
+- /*update default postgres with what I gave mike*/
+
+V2%ep9RGe4+=
+
+docker start ag4 wave blade workflow-db workflow
+
+docker run -d --name ag4 -p 10035:10035 blade/ag4
+docker run -d --name wave -p 7878:7878 --link ag4:ag4 blade/wave 
+docker run -d --name blade -p 8080:8086 --link wave:wavews blade/blade
+docker run -d --name workflow-db -p 5432:5432 postgres/activiti 
+
+docker build --tag=modus/workflow .
+
+gunzip -c whatever.tar.gz | docker load
+
+debugger: 10.0.2.15:5005
+
+docker rm $(docker ps -a -q -f status=exited)
+
+
+https://bane.modusoperandi.com/stash/projects/TTP/repos/rya/browse/README.md#
+
+Michael Wooten: Mwooten111@gmail.com
+
+
+http://localhost:8181/pharaoh/inbox/start.html
+
+http://localhost:8181/pharaoh/inbox/inbox.html
+
+http://localhost:8181/pharaoh/inbox/newform.html
+
+http://localhost:8181/catalist
+
+https://fst.issinc.com/owf/
+
+=============================================================================================
+avid1.issinc.com
+fst-dockerhost
+
+=============================================================================================
+docker stop <your container>
+docker commit <your container>
+docker tag <the resulting image from before> <imageName_you_want:tag_you_want>
+docker save -o <your file.tar> <imageName_you_want:tag_you_want>
+scp <your file.tar> <user.name>@avid1.issinc.com:
+ 
+then, from your office you can
+ 
+scp <user.name>@avid1.issinc.com:<your file.tar>
+=============================================================================================
+
+one other way that you can move the containers around, if you don't want to do tar's:
+
+docker stop <container>
+docker commit <container>
+docker tag <image from previous command> docker-registry.fst.issinc.com/modus/<image_name>:<tag (usually a version #)>
+docker push docker-registry.fst.issinc.com/modus/<image_name>:<tag (usually a version #)>
+
+then from your office:
+docker login docker-registry.fst.issinc.com
+docker pull docker-registry.fst.issinc.com/modus/<image_name>:<tag (usually a version #)>
+
+updates from your office to the env work the same, but in reverse:
+
+from your office:
+docker login docker-registry.fst.issinc.com
+docker push docker-registry.fst.issinc.com/modus/<image_name>:<tag (usually the next version #)>
+
+from the env:
+docker run [options] docker-registry.fst.issinc.com/modus/<image_name>:<tag (usually the next version #)>
+
+=============================================================================================
+workflow-services
+               This is where the REST service and the JSON-RPC service are located. This project builds a .war file for deploying those services. The two key classes are JsonRpcEndpoint and RestEndpoint. You will notice a lot of packages relating to “Actions”. The actions in this case are the endpoint implementations for the JSON-RPC services. Most of these actions call commands in the workflow-actions project (which should really be named workflow-commands to not be confused with the service actions). The actual instantiation of Activiti is based on the src/main/resources/pharaoh/interfaces/servlet/activity.cfg.xml file, which is the Spring DI file that initializes and binds everything together. The src/main/resources/pharaoh/properties/Pharaoh.properties file contains the configurable properties for the services.
+
+workflow-actions
+               These are the implementations of the commands for accessing the Activiti instance. Activiti has a concept of commands and a command context. If the commands are not executed within the right context a lot of stuff doesn’t get wired up properly. Most of the actions you will want to take against Activiti will be in the form of commands. Activiti has a lot of built-in commands, but we have replaced some of them and added our own additional ones. 
+
+workflow-json
+               These are decorators for the Activiti data transfer objects so that they can be serialized to JSON with Jackson. Typically this will be done at the end of an action in workflow-services.
+
+workflow-common
+               This is a place for the configuration and common utility code. It also contains decorators for the major Activiti services that add additional functionality. For instance, ActivitiTripleStoreTaskServiceDecorator overrides the saveTask() method to both save the task in the Activiti database and its properties into a triple store.
+
+inbox-web
+               This is the project containing the user interface components. As you have seen, this folder includes build steps that involve node.js for some of the processing. This project has no direct Java relationship to any of the other projects, but it is a direct consumer of the services exposed by workflow-services. The Java code in this project is currently not being used (but cannot safely be deleted). Most of this project is HTML and AngularJS code. See json-rpc.js for an understanding of how the JSON-RPC calls are made. See pharaoh.services.js for examples of how the json-rpc Angular service is used.
+=============================================================================================
+
+SELECT * {
+    process:10001 ?y ?z .
+} limit 10
