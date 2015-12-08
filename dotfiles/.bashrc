@@ -118,6 +118,7 @@ fi
 
 export PATH=/usr/local/apache-maven-3.3.3/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export TERM="xterm-256color"
 
 ### Added for SSH forwarding in the ISS integration environment.
 # --- please add this section at the bottom of your .bashrc file
@@ -141,3 +142,5 @@ else
   echo -e "\e[01;31m3. SSH agent forwarding could not be enabled - please ensure that the ${SSH_AGENT} and ${SSH_ADD} files exist and are executable by you.\e[00m"
 fi
 # --- end ssh agent configuration
+
+alias gitlog='git log --graph --decorate --oneline'

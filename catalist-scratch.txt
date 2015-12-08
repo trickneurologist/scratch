@@ -23,7 +23,6 @@ gunzip -c whatever.tar.gz | docker load
 
 debugger: 10.0.2.15:5005
 
-
 docker rm $(docker ps -a -q -f status=exited)
 
 
@@ -94,3 +93,7 @@ workflow-common
 inbox-web
                This is the project containing the user interface components. As you have seen, this folder includes build steps that involve node.js for some of the processing. This project has no direct Java relationship to any of the other projects, but it is a direct consumer of the services exposed by workflow-services. The Java code in this project is currently not being used (but cannot safely be deleted). Most of this project is HTML and AngularJS code. See json-rpc.js for an understanding of how the JSON-RPC calls are made. See pharaoh.services.js for examples of how the json-rpc Angular service is used.
 =============================================================================================
+
+SELECT * {
+    process:10001 ?y ?z .
+} limit 10
