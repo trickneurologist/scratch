@@ -97,3 +97,11 @@ inbox-web
 SELECT * {
     process:10001 ?y ?z .
 } limit 10
+
+
+
+docker exec -t workflow-db pg_dumpall -Upostgres -c > outputfile.sql
+
+cat dump outputfile.sql | docker exec -i workflow-db psql -Upostgres
+
+Note: make sure all other containers linked to the db are stopped before restoring

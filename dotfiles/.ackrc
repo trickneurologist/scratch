@@ -1,0 +1,7 @@
+--sort-files
+--color
+--color-filename=magenta
+--color-lineno=green
+--color-match=bold red
+
+--ignore-dir=.idea
