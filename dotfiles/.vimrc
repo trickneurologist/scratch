@@ -43,11 +43,14 @@ set showmode
 " use unix line endings
 set fileformat=unix
 
+let g:base16_shell_path="base16-builder/output/shell/"
+let base16colorspace="256"
+set t_Co=256
+set background=dark
+colorscheme base16-atelierdune
+
 set guifont=Hack
 
-colorscheme darkblue
-
-set t_Co=256
 
 " Toggle Vexplore  with Ctrl-E
 function! ToggleVExplorer()
