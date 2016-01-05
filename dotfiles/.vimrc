@@ -1,3 +1,9 @@
+" set no compatibility mode
+set nocp
+
+" plugins are enabled
+filetype plugin on
+
 " show line numbers
 set number
 
@@ -43,11 +49,11 @@ set showmode
 " use unix line endings
 set fileformat=unix
 
-let g:base16_shell_path="base16-builder/output/shell/"
+let g:base16_shell_path="~/.vim/colors/base16-builder/output/shell/"
 let base16colorspace="256"
 set t_Co=256
 set background=dark
-colorscheme base16-atelierdune
+colorscheme base16-default
 
 set guifont=Hack
 
@@ -71,7 +77,7 @@ function! ToggleVExplorer()
     let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
+map <silent> <C-K> :call ToggleVExplorer()<CR>
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
