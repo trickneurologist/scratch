@@ -49,7 +49,8 @@ set showmode
 " use unix line endings
 set fileformat=unix
 
-let g:base16_shell_path="~/.vim/colors/base16-builder/output/shell/"
+" setup base16 color scheme support
+let g:base16_shell_path="~/.vim/colors/base16-builder/output/shell"
 let base16colorspace="256"
 set t_Co=256
 set background=dark
@@ -85,6 +86,8 @@ let g:netrw_altv = 1
 " Default to tree mode
 let g:netrw_liststyle=3
 " Change directory to the current buffer when opening files.
-set autochdir
+"set autochdir
 
+nnoremap <F5> :buffers<CR>:buffer<Space>
 
+execute pathogen#infect()

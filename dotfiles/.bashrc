@@ -105,6 +105,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+alias gitlog="git log --graph --date=relative --format='%C(yellow)%h %C(auto)%d %C(reset)%s - %C(bold)%an %C(dim)%ad'"
+
+# Keyboard remaps
+setxkbmap -option caps:escape
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,6 +124,10 @@ fi
 export PATH=/usr/local/apache-maven-3.3.3/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export TERM="xterm-256color"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 ### Added for SSH forwarding in the ISS integration environment.
 # --- please add this section at the bottom of your .bashrc file
@@ -143,4 +152,4 @@ else
 fi
 # --- end ssh agent configuration
 
-alias gitlog='git log --graph --decorate --oneline'
+
