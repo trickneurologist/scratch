@@ -106,6 +106,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 alias gitlog="git log --graph --date=relative --format='%C(yellow)%h %C(auto)%d %C(reset)%s - %C(bold)%an %C(dim)%ad'"
+alias lt="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
 # Keyboard remaps
 setxkbmap -option caps:escape
