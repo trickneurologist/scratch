@@ -1,12 +1,20 @@
 " set no compatibility mode
 set nocp
 
+let mapleader="-"
+
 if has('autocmd')
     filetype plugin indent on
 endif
 
 " plugins are enabled
 filetype plugin on
+
+" Set directories
+set backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
 " for ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -21,11 +29,21 @@ set number
 " always show cursor position
 set ruler
 
+" always show the cursor line
+set cursorline
+
 " Use the wildmenu
 set wildmenu
 
 " Always show status bar
 set laststatus=2
+
+" code folding
+set foldenable
+set foldlevelstart=10
+
+" only redraw when needed
+set lazyredraw
 
 " Searching
 set ignorecase  " Case-insensitive searching
@@ -90,7 +108,7 @@ autocmd FileType javascript set foldmethod=manual
 " Markdown related
 autocmd FileType markdown set expandtab
 autocmd FileType markdown set smartindent
-autocmd FileType markdown set textwidth=80
+"autocmd FileType markdown set textwidth=80
 
 " Log files
 autocmd BufRead,BufNewFile *.log set syntax=log4j
@@ -132,8 +150,18 @@ let g:netrw_altv = 1
 " Default to tree mode
 let g:netrw_liststyle=3
 " Change directory to the current buffer when opening files.
-"set autochdir
+" set autochdir
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
 execute pathogen#infect()
+
+"echo "┻━┻︵ \\(°□°)/ ︵ ┻━┻"
+
+inoremap <c-d> <esc>ddi
+inoremap <c-u> <esc>viwU<esc>i
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ww :set wrap!<cr>
+inoremap jk <esc>
