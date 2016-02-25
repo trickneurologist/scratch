@@ -1,12 +1,9 @@
-x Hide Resolve Button in task dialog
-x Add filter for description in task dialog
 - Add type column (subprocess and subtask)
 - Clicking sub* in list brings up properties dialog
 x Investigate Orbeon forms
 - 
 - Persistence of custom forms (alfresco?)
 - internal testing environment
-- /*update default postgres with what I gave mike*/
 
 V2%ep9RGe4+=
 
